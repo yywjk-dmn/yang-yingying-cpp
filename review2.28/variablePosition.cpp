@@ -18,3 +18,4 @@ int main()
     std::cout<<"Total:"<<sum(n)<<std::endl;
     return 0;
 }
+

@@ -16,6 +16,8 @@ void func()
     //#undef A
 }
 
+
+
 int main()
 {
     const int b = 10;

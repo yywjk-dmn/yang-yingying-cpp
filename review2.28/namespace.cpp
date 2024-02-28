@@ -10,6 +10,8 @@ namespace NamespaseA
     }
 }
 
+
+
 namespace NamespaseB
 {
     namespace NamespaseC
