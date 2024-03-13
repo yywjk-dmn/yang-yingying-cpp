@@ -144,3 +144,91 @@ stdString::operator double()
 {
     return atof(this->s);
 }
+
+std::ostream& operator<<(std::ostream& os, const stdString& str)
+{
+    os<<str.s;
+    return os;
+}
+/* 输入的重载 */
+std::istream& operator>>(std::istream& is, stdString& str)
+{
+    char c = '\0';
+    while ((c = getchar()) != '\n')
+    {
+        str += c;
+    }
+    return is;
+}
+
+std::ostream &operator<<(std::ostream &os, const stdStringList &list)
+{
+    for (int idx = 0; idx < list.size; idx++)
+    {
+        os<<list.string[idx]<<std::endl;
+    }
+    return os;
+}
+
+stdStringList::stdStringList()
+{
+    this->size = 0;
+    this->capacity = 15;
+    this->string = new stdString[this->capacity];
+}
+
+stdStringList::~stdStringList()
+{
+    this->size = 0;
+    this->capacity = 0;
+    delete []this->string;
+}
+
+void stdStringList::removeByIndex(int index)
+{
+    /* index是非法值 */
+    if (index < 0 || index >= this->size)
+        return;
+    for (int idx = index; index < this->size - 1; idx++)
+    {
+        this->string[idx] = this->string[idx + 1];
+    }
+    this->size--;
+}
+
+stdStringList &stdStringList::operator+=(const stdString &str)
+{
+    if (this->size == this->capacity)
+    {
+        this->capacity *= 2;
+        stdString *newPtr = new stdString[this->capacity];
+        for (int idx = 0; idx < this->size; idx++)
+        {
+            newPtr[idx] = this->string[idx];
+        }
+        delete []this->string;
+        this->string = newPtr;
+    }
+    this->string[this->size++] = str;
+    return *this;
+}
+
+stdStringList &stdStringList::operator-=(const stdString &str)
+{
+    for (int idx = 0; idx < this->size; idx++)
+    {
+        if (this->string[idx] == str)
+        {
+            removeByIndex(idx);
+            idx--;
+        }
+    }
+    return *this;
+}
+
+stdString &stdStringList::operator[](int index)
+{
+    return this->string[index];
+}
+
+
