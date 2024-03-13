@@ -124,7 +124,6 @@ stdMyString& stdMyString::operator+=(const char c)
 
 bool stdMyString::operator==(const stdMyString &str)
 {
-
     return strcmp(this->s, str.s) == 0;
 }
 
@@ -140,8 +139,7 @@ bool stdMyString::operator>(const stdMyString &str)
 
 char &stdMyString::operator[](int index)
 {
-    return this->s[index];
-    // TODO: 在此处插入 return 语句
+    return this->s[index];  
 }
 
 stdMyString::operator int()

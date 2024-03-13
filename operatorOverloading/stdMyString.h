@@ -5,9 +5,7 @@
 class myStringList;
 class stdMyString
 {
-    
 public:
-
     stdMyString();
     stdMyString(const char * str);
     stdMyString(const stdMyString & str);
